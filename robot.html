@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="./style.css">
+<div class="robot rotbot_position" data-id="0"
+    style="transform: translateX(118px); bottom: 158px; display: flex;"><img
+        src="https://i.postimg.cc/hPbBLTjw/01.png" class="logo-img-COjMQi"
+        style="width: 24px; height: 24px; border-radius: 4px;"><span class="shortcut--0OZjH"></span>
+</div>
+<div class="sidebar" style="display: none;">
+    <div class="top-bar">
+        <button>功能按钮1</button>
+        <button>功能按钮2</button>
+        <span class="close-btn">&times;</span>
+    </div>
+    <div class="chat-history">
+        <!-- 聊天记录展示区 -->
+    </div>
+    <div class="input-area">
+        <input type="text" placeholder="输入文本">
+        <button>发送</button>
+    </div>
+</div>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./script.js"></script>
+<script>
+    var openaiApiKey = 'api-key';
+    var prompt = '你好呀';
+
+    $.ajax({
+        url: 'https://api.openai.com/v1/chat/completions',
+        type: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + openaiApiKey
+        },
+        data: JSON.stringify({
+            'model': 'gpt-3.5-turbo',
+            'messages': [{ 'role': 'user', 'content': prompt}],
+            'temperature': 0.7
+        }),
+        success: function (response) {
+            console.log(response.choices[0].message.content);
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+</script>
+
