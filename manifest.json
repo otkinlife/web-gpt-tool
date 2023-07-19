@@ -1,0 +1,56 @@
+{
+    "manifest_version": 3,
+    "name": "Mona",
+    "version": "1.0",
+    "description": "AI Tool",
+    "action": {
+        "default_icon": "img/Robot-Outline.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "48": "img/Robot-Outline.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js",
+                "lib/highlight.min.js",
+                "lib/jquery.min.js",
+                "lib/marked.min.js",
+                "script.js"
+            ],
+            "css":[
+                "lib/default.min.css",
+                "style.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "robot.html",
+                "content.js",
+                "lib/highlight.min.js",
+                "lib/jquery.min.js",
+                "lib/marked.min.js",
+                "script.js",
+                "lib/default.min.css",
+                "style.css",
+                "img/Robot-Outline.png",
+                "img/1689681139961.jpg"
+            ],
+            "matches": [
+                "<all_urls>"
+            ],
+            "use_dynamic_url": false
+        }
+    ]
+}
